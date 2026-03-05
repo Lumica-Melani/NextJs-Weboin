@@ -1,27 +1,44 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-brand-orange: #7c2d12;
+  --color-clay-dark: #1c1917;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+:root,
+[data-theme="light"] {
+  --p: hsl(25 75% 28%); /* Primary: Terracotta */
+  --s: hsl(82 52% 27%); /* Secondary: Olive */
+  --a: hsl(35 92% 37%); /* Accent: Amber */
+  --n: hsl(27 5% 24%); /* Neutral: Stone */
+  --b1: hsl(36 100% 98%); /* Base-100: Cream */
+  --bc: hsl(
+    27 5% 24%
+  ); /* Base-Content: (Text color)
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+[data-theme="dark"] {
+  --p:  hsl(25 95% 61%);
+  --s:  hsl(84 81% 55%);
+  --a:  hsl(45 93% 65%);
+  --n:  hsl(24 10% 15%);
+  --b1: hsl(24 10% 10%);
+  --bc: hsl(36 100% 98%);   /* Light text for dark mode */
+}
+@layer base {
+  body {
+    background-color: var(--b1);
+    color: var(--bc);
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 1rem;
+  h1,
+  h2,
+  h3 {
+    color: var(--p);
+  }
+
+  a {
+    color: var(--s);
+    text-decoration: underline;
+  }
 }
